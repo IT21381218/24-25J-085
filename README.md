@@ -24,6 +24,6 @@ This project is focused on developing a **Comprehensive Veterinary Application**
    - **Role**: Milk Production Prediction  
    - **Responsibilities**: Created a predictive model to forecast milk production based on historical and environmental data. Integrated the model into the web application for real-time predictions.
 
-4. **[Member 4 Name]**  
+4. **Hettiarachchi V.E.**  
    - **Role**: Veterinary Communication and Services  
    - **Responsibilities**: Implemented features for scheduling veterinary appointments, developed communication tools for consultations and emergency support, and integrated the API for locating nearby veterinary clinics.
