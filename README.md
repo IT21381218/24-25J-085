@@ -16,7 +16,7 @@ This project is focused on developing a **Comprehensive Veterinary Application**
    - **Role**: Disease Detection and Prevention  
    - **Responsibilities**: Developed the machine learning model for detecting common cattle diseases using image classification techniques, built the disease database, and integrated the symptom checker.
 
-2. **[Member 2 Name]**  
+2. **Dissanyake D.M.W.B.T**  
    - **Role**: Cow Care Management  
    - **Responsibilities**: Developed interfaces for managing cow profiles, health records, and diet tracking. Implemented the system for reminders and alerts for important veterinary tasks.
 
