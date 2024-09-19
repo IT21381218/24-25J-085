@@ -20,7 +20,7 @@ This project is focused on developing a **Comprehensive Veterinary Application**
    - **Role**: Cow Care Management  
    - **Responsibilities**: Developed interfaces for managing cow profiles, health records, and diet tracking. Implemented the system for reminders and alerts for important veterinary tasks.
 
-3. **[Member 3 Name]**  
+3. **Ekanayake E.M.D.T**  
    - **Role**: Milk Production Prediction  
    - **Responsibilities**: Created a predictive model to forecast milk production based on historical and environmental data. Integrated the model into the web application for real-time predictions.
 
