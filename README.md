@@ -9,8 +9,11 @@ This project is focused on developing a **Comprehensive Veterinary Application**
 - **Milk Production Prediction**: Predictive model that forecasts milk production based on environmental factors and historical data, enabling farmers to make informed decisions about herd management.
 - **Streamlined Veterinary Communication**: Scheduling and communication tools for connecting farmers with veterinarians, including emergency support and an API integration to locate the nearest animal hospitals.
 
+![Project Diagram](https://github.com/user-attachments/assets/e92b1f82-73e1-4213-a43c-b7a78e9428eb)
 
-## Project Members
+
+## Project Members![Uploading Project Diagram.png…]()
+
 
 1. **Perera L.P.S.R**  
    - **Role**: Disease Detection and Prevention  
@@ -29,4 +32,3 @@ This project is focused on developing a **Comprehensive Veterinary Application**
    - **Responsibilities**: Implemented features for scheduling veterinary appointments, developed communication tools for consultations and emergency support, and integrated the API for locating nearby veterinary clinics.
   
 
-![RP Diagram](https://github.com/user-attachments/assets/165d5c59-ab12-40ed-a6d6-812a2794cd62)
