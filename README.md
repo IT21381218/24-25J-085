@@ -12,7 +12,7 @@ This project is focused on developing a **Comprehensive Veterinary Application**
 ![Project Diagram](https://github.com/user-attachments/assets/e92b1f82-73e1-4213-a43c-b7a78e9428eb)
 
 
-## Project Members![Uploading Project Diagram.png…]()
+## Project Members
 
 
 1. **Perera L.P.S.R**  
