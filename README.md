@@ -12,7 +12,7 @@ This project is focused on developing a **Comprehensive Veterinary Application**
 
 ## System diagram
 
-![RP Diagram](https://github.com/user-attachments/assets/9d619461-64d8-4640-9f6d-c83b99959219)
+![Project overview Diagram](https://github.com/user-attachments/assets/e1a295e4-e5f1-45c2-9ac8-828746e2610a)
 
 
 ## Project Members
