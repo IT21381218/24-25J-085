@@ -9,7 +9,9 @@ This project is focused on developing a **Comprehensive Veterinary Application**
 - **Milk Production Prediction**: Predictive model that forecasts milk production based on environmental factors and historical data, enabling farmers to make informed decisions about herd management.
 - **Streamlined Veterinary Communication**: Scheduling and communication tools for connecting farmers with veterinarians, including emergency support and an API integration to locate the nearest animal hospitals.
 
-##System diagram
+
+## System diagram
+
 ![RP Diagram](https://github.com/user-attachments/assets/9d619461-64d8-4640-9f6d-c83b99959219)
 
 
