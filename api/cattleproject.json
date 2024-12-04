@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cattleproject-fbb10",
+  "private_key_id": "be157208e2ad0f6f1c6c825b01ac1a0f9547f72a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC8GINl7m/S4ea3\nEFsWqYdZKrjXbmc2ewnRgHHKqX2W19Nz3O6vUzJX4kVyFVC3zQBn8BqafYMmy5+B\nx1fvn3TzXmCnMl1l4hqBpd9tJEWWfuL1hNJVPru6IT+Y9rD2TXhExICCnreWTbaN\ngR+DQKzWwDmdTSagyzIsLqG24FA9hi6rfwMRztQJ5RYz9Z0olYf+A0FKGmxGqBEZ\nogy3viltmTNMdMuQCzWhO3hAD91idDL3nedzlpkHVFd9rEh8TZyuN/EN8fm4fz1+\nxWtvSPWOL9rvZkJykjDEoopHpusT4Ca3DooYDrHhUAsItUk72rH34Gx2FgvaXzYo\nrVfMFifzAgMBAAECggEAMPEd631dml0ON67pTJ3C6ngbzW5cK8ha9yi5Mxbj50Z0\nLi8b6gG3VTe6gyM5tAGC7AiFG5Kx9/u+nrmcT2zJtPNnKcoIlFR/OiHLX24zLyQH\n8QNk6SpgFV/GWQpDZGsm8pnAqHwc396LtAkXhoLjFiPBOgVTmj4U6Xset+No7YDU\nyOQm94hdFb70STEQa9aWH5+w7CcRyXH4uMCYP8ZWkhY+RTnvsGcuVyiQlluU1Z5i\nUtY5zPrd0PHM8w6ADnYiCaQ+JjgOgA8ro98hEoy2OsTybOZ4LHPtrGy1a+O9rSz7\nHiuJq2b2pEsUtpQ1/NxWViGwKaS247EmL5LDbzkDMQKBgQDjuDIW17Zs8TIH82q8\nkBpMZONSQNwHiJC9Pe4vTCpxwIgrgF6zNnxV0VIW1riu0jKcSIk+WccJlcUpMFmL\nqzbAEPKHLaEGDAZYOwGxp6ZWQxAAkU2+NCWA/7VztLjKmidYcMrO4iMBILQG1qur\nkJh0tu7GKCGzAJ5jej5FoukfsQKBgQDTdJLgHdoXe9dVMuX+Z4K3k019BNCu8QCD\nfUjTeAsmxPYuzM+yCOnBjKhAtT+f3AsYICOJLHnsv7ZhR2yOq0UjQFjpD/heFnrt\nQC4W/zy0uVnMVUzPtnCtknaoPQbE0XHh6n+iJ930EHzGfelkAUpQIeASuDMTfpMP\nL46LYRFu4wKBgQCmAmU5s96BA0EG/NSmTKNvZ+k00KXXNB7YZyqZ/nu+264pkHb5\nTVJNOcEPd0/B2ukcd+DdvJNWkIHgaigNoy7RzEkSdRg7kU6aycGNYvvnTRKAZ212\nqQtiRIhiprBEuybN2cRwF/mO2+mCRsN12n7aL3ZYrW8L0Pqm6Lo3B/HNsQKBgQCw\nESvO0uxqi2Jz/YqF91hfVJa710uPrvpXgfUmp5jZcjzuIPl7a3KAB4d9Qa21hPnz\n36bXLCJlYAgTHe6lKLTLsmOVxAdxCFTYwYze9y1r6b18pzXq6iUOUZrdYNsG/MJP\ncvtNYNatxyCuAd9Ytr5S1LIHxDo7LDR0+4s8QNnMMwKBgQCI/FgFysIKc/snyigz\nhkrA1qnu4aIh8nlAilyicOL7qjHigcu19vFjd8dmXcM0Tyt6oxb4ZzZ6fwL8fZa2\nNcWFuqR033NzYBiGARCA6WdQiFfAB3VHXVEjAZtT8F+hexomUsL5ljpDF5DIQBbg\nSM6b6I2fO7yRDdmHRp6yrJ7AoA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-kvejw@cattleproject-fbb10.iam.gserviceaccount.com",
+  "client_id": "112399705372644019350",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-kvejw%40cattleproject-fbb10.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
