@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
 import './App.css';
+import Home from './pages/Home';
+import SignUp from './pages/forms/SignUp';
+import SignIn from './pages/forms/SignIn';
+import ProfilePictureUpload from './pages/forms/ProfilePictureUpload';
+import DiseaseDetection from './pages/DiseaseDetection';
+import HealthMonitor from './pages/HealthMonitor';
+import MilkProduction from './pages/MilkProduction';
+import VetLocate from './pages/VetLocateMap';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/logged/dashboard" element={<Dashboard />} />
+        <Route path="/logged/disease-detection" element={<DiseaseDetection />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
