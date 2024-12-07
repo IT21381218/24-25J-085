@@ -33,7 +33,7 @@ This project is focused on developing a **Comprehensive Veterinary Application**
 4. **Hettiarachchi V.E.**  
    - **Role**: Veterinary Communication and Services  
    - **Responsibilities**: Implemented features for scheduling veterinary appointments, developed communication tools for consultations and emergency support, and integrated the API for locating nearby veterinary clinics.
-  
-   - Git repository Link: https://github.com/IT21381218/24-25J-085.git
+
+Git repository Link: https://github.com/IT21381218/24-25J-085.git
   
 
