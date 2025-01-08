@@ -25,7 +25,9 @@ const HealthCheckupForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     // Validation
     const requiredFields = Object.values(formData).filter((value) => value === '');
