@@ -18,7 +18,11 @@ const Dashboard = () => {
           <Card numbers="0 Alerts" cardName="Disease Detection" icon='/icons/cow-icon-removebg-preview.png' />
           <Card numbers="0 Daily" cardName="Production Management" icon='/icons/milk-icon-removebg-preview.png' />
           <Card numbers="0 Daily" cardName="Feeding" icon='/icons/feed-icon-removebg-preview.png' />
-        
+        </div>
+        <div className="details">
+          <RecentOrders />
+          <RecentCustomers />
+        </div>
         <Footer />
       </div>
     </div>
