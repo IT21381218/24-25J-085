@@ -42,7 +42,7 @@ GOOGLE_API_KEY = 'AIzaSyDAsJYZSQ92_NQAz9kiSpW1XpyuCxRl_uI'
 GOOGLE_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 
 
-# Load MOdels Health
+# LoadMOdelsHealth
 MODEL_HEALTH = joblib.load('model_health_random_f_classifier.joblib')
 LABEL_ENCODER =  joblib.load('label_encoder_health_status.joblib')
 
