@@ -54,7 +54,7 @@ except FileNotFoundError:
     raise Exception("Model file not found. Ensure the decision_tree_model.joblib file is in the same directory.")
 
 
-# Load Pest detection Models
+
 # Load Pest detection Models
 MODEL_PESTS = load_model("model_pests_detect.h5")
 CLASS_PESTS = ['Mastitis', ' Tick Infestation', 'Dermatophytosis (RINGWORM)', 'Fly Strike (MYIASIS)', 'Foot and Mouth disease', 'Lumpy Skin', 'Black Quarter (BQ)', 'Parasitic Mange']
