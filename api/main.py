@@ -251,8 +251,7 @@ async def predict_milk_grade(input_data: MilkQualityInput):
 
 # Milk Production Forecast
 class MilkProductionRequest(BaseModel):
-     year: int
-     month: int
+     
 
 @app.post("/predict-milk-production")
 async def predict_milk_production(request: MilkProductionRequest):
