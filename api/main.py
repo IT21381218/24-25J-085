@@ -199,15 +199,6 @@ async def predict_health_status(input_data: HealthStatusInput):
     
 
 
-# Milk Quality Monitor
-class MilkQualityInput(BaseModel):
-    pH: float
-    Temperature: float
-    Taste: int
-    Odor: int
-    Fat: float
-    Turbidity: int
-    Colour: int
 
 # Define grade mapping
 grade_mapping = {0: "high", 1: "low", 2: "medium"}
