@@ -254,7 +254,7 @@ class MilkProductionRequest(BaseModel):
      year: int
      month: int
 
-@app.post("/predict-milk-production")
+@app.post("/predict_milk_production")
 async def predict_milk_production(request: MilkProductionRequest):
     """
     Predicts milk production for a given year and month.
