@@ -198,7 +198,7 @@ async def predict_health_status(input_data: HealthStatusInput):
         raise HTTPException(status_code=500, detail=f"An error occurred during prediction: {str(e)}")
     
 
-# Predict Cow Health
+# Predict grade
 class MilkQualityInput(BaseModel):
         pH: float
         Temperature: float
