@@ -251,7 +251,7 @@ async def predict_milk_grade(input_data: MilkQualityInput):
         if predicted_grade_category is None:
             raise ValueError("Invalid prediction received from the model.")
 
-        return {"predicted_grade": predicted_grade_category}
+        return {" predicted_grade ": predicted_grade_category}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
