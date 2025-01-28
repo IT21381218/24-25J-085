@@ -243,12 +243,12 @@ async def predict_milk_grade(input_data: MilkQualityInput):
         ])
 
         # Perform the prediction
-        predicted grade = MODEL_ML_QUALITY.predict(input_array)
+        predicted_grade = MODEL_ML_QUALITY.predict(input_array)
 
         # Map the predicted grade to a category
-        predicted grade_category = grade_mapping.get(predicted_grade[0])
+        predicted_grade_category = grade_mapping.get(predicted_grade[0])
 
-        if predicted grade_category is None:
+        if predicted_grade_category is None:
             raise ValueError("Invalid prediction received from the model.")
 
         return {"predicted_grade": predicted_grade_category}
