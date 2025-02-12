@@ -144,6 +144,9 @@ async def predict_pest(file: UploadFile = File(...)):
     except Exception as e:
         os.remove(file_path)  # Clean up the uploaded file in case of error
         raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
+        #     except Exception as e:
+        # os.remove(file_path)  # Clean up the uploaded file in case of error
+        # raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
 
 # Predict Cow Health
 class HealthStatusInput(BaseModel):
