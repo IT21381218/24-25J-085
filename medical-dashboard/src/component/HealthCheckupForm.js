@@ -7,6 +7,11 @@ const HealthCheckupForm = () => {
     milk_production: '',
     respiratory_rate: '',
     walking_capacity: '',
+    sleeping_duration: '',
+    body_condition_score: '',
+    heart_rate: '',
+    eating_duration: '',
+    lying_down_duration: '',
     ruminating: '',
     rumen_fill: '',
   });
