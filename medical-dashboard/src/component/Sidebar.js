@@ -66,7 +66,7 @@ const Sidebar = () => {
         <li className={isActive('/logged/health-monitor') ? 'active' : ''}>
           <Link to="/logged/health-monitor">
             <span className="nav-icon"><FaHeartbeat /></span>
-            <span className="title">Health Check</span>
+            <span className="title">Health Checkup</span>
           </Link>
         </li>
         <li>
