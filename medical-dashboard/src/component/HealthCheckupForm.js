@@ -30,10 +30,10 @@ const HealthCheckupForm = () => {
     e.preventDefault();
 
     // Validation
-    const requiredFields = Object.values(formData).filter((value) => value === '');
+    const requiredFields = Object.values().filter((value) => value === '');
     if (requiredFields.length > 0) {
       alert('Please fill all the fields before submitting.');
-      return;
+      ;
     }
 
     setLoading(true);
