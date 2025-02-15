@@ -15,7 +15,7 @@ const Dashboard = () => {
         <Topbar />
         <div className="cardBox">
           <Card numbers="0" cardName="Cattle Management" icon='/icons/farm-icon-removebg-preview.png' />
-          <Card numbers="0 Alerts" cardName="Disease Detection" icon='/icons/cow-icon-removebg-preview.png' />
+          <Card numbers="0 Alerts" cardName="Disease Detection" icon='' />
           <Card numbers="0 Daily" cardName="Production Management" icon='/icons/milk-icon-removebg-preview.png' />
           <Card numbers="0 Daily" cardName="Feeding" icon='/icons/feed-icon-removebg-preview.png' />
         </div>
