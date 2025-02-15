@@ -22,7 +22,7 @@ const HealthCheckupForm = () => {
   // Handle form field changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, []: value });
   };
 
   // Handle form submission
