@@ -53,7 +53,7 @@ const HealthCheckupForm = () => {
   return (
     <div className="recentOrders">
       <div className="cardHeader">
-        <h2>Health Checkup Form</h2>
+        <h2>cow</h2>
       </div>
 
       <form onSubmit={handleSubmit}>
