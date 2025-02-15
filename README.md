@@ -10,7 +10,13 @@ This project is focused on developing a **Comprehensive Veterinary Application**
 - **Streamlined Veterinary Communication**: Scheduling and communication tools for connecting farmers with veterinarians, including emergency support and an API integration to locate the nearest animal hospitals.
 
 
+## System diagram
+
+![Project overview Diagram](https://github.com/user-attachments/assets/e1a295e4-e5f1-45c2-9ac8-828746e2610a)
+
+
 ## Project Members
+
 
 1. **Perera L.P.S.R**  
    - **Role**: Disease Detection and Prevention  
@@ -27,3 +33,7 @@ This project is focused on developing a **Comprehensive Veterinary Application**
 4. **Hettiarachchi V.E.**  
    - **Role**: Veterinary Communication and Services  
    - **Responsibilities**: Implemented features for scheduling veterinary appointments, developed communication tools for consultations and emergency support, and integrated the API for locating nearby veterinary clinics.
+
+Git repository Link: https://github.com/IT21381218/24-25J-085.git
+  
+
