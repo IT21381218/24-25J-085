@@ -40,7 +40,7 @@ const HealthCheckupForm = () => {
     setHealthStatus(null);
 
     try {
-      const response = await axios.post('http://localhost:8000/predict-health-status', formData);
+      const response = await axios.post('http://localhost:3000/predict-health-status', formData);
       setHealthStatus(response.data.health_status);
     } catch (error) {
       console.error('Error predicting health status:', error);
