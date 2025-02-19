@@ -109,7 +109,7 @@ async def login_user(user: LoginUser):
     user_data.pop("password")  # Remove the password field from the response
 
     return {"message": "Login successful", "user": user_data}
-
+    # return {"message": "Login successful", "user": user_data}
 # Predict Pests and Diseases
 @app.post("/predict-pest")
 async def predict_pest(file: UploadFile = File(...)):
