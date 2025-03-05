@@ -229,7 +229,7 @@ async def predict_milk_grade(input_data: MilkQualityInput):
         - Predicted Grade: "high", "medium", or "low"
     """
     try:
-        # Prepare the input for prediction
+        
         input_array = np.array([
             [
                 input_data.pH,
