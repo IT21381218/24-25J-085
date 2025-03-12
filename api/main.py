@@ -151,41 +151,41 @@ async def predict_pest(file: UploadFile = File(...)):
         # raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
 
 
-        @app.post("/predict-disease")
-async def predict_disease(file: UploadFile = File(...)):
-    """
-    Endpoint to classify an uploaded image for behavioral disease detection.
-    """
-    # Save the uploaded file temporarily
-    file_path = os.path.join(UPLOAD_DIR, file.filename)
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+#         @app.post("/predict-disease")
+# async def predict_disease(file: UploadFile = File(...)):
+#     """
+#     Endpoint to classify an uploaded image for behavioral disease detection.
+#     """
+#     # Save the uploaded file temporarily
+#     file_path = os.path.join(UPLOAD_DIR, file.filename)
+#     with open(file_path, "wb") as buffer:
+#         shutil.copyfileobj(file.file, buffer)
     
-    try:
-        # Preprocess the image
-        image = Image.open(file_path).convert("RGB")  # Ensure RGB format
-        image = image.resize((48, 48))  # Resize to model's input size
-        image_array = np.array(image) / 255.0  # Normalize to [0, 1]
-        image_array = np.expand_dims(image_array, axis=0)  # Add batch dimension
+#     try:
+#         # Preprocess the image
+#         image = Image.open(file_path).convert("RGB")  # Ensure RGB format
+#         image = image.resize((48, 48))  # Resize to model's input size
+#         image_array = np.array(image) / 255.0  # Normalize to [0, 1]
+#         image_array = np.expand_dims(image_array, axis=0)  # Add batch dimension
 
-        # Predict the disease label
-        predictions = MODEL_DISEASES.predict(image_array)
-        predicted_index = np.argmax(predictions, axis=1)[0]
-        confidence = float(np.max(predictions))  # Highest probability
+#         # Predict the disease label
+#         predictions = MODEL_DISEASES.predict(image_array)
+#         predicted_index = np.argmax(predictions, axis=1)[0]
+#         confidence = float(np.max(predictions))  # Highest probability
 
-        # Map the predicted index to the disease label
-        predicted_label = CLASS_DISEASES[predicted_index]
+#         # Map the predicted index to the disease label
+#         predicted_label = CLASS_DISEASES[predicted_index]
 
-        # Clean up the uploaded file
-        os.remove(file_path)
+#         # Clean up the uploaded file
+#         os.remove(file_path)
 
-        return {
-            "predicted_label": predicted_label,
-            "confidence": confidence
-        }
-    except Exception as e:
-        os.remove(file_path)  # Clean up the uploaded file in case of error
-        raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
+#         return {
+#             "predicted_label": predicted_label,
+#             "confidence": confidence
+#         }
+#     except Exception as e:
+#         os.remove(file_path)  # Clean up the uploaded file in case of error
+#         raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
 
 
 # Predict Cow Health
