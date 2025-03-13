@@ -74,45 +74,40 @@
 // export default SignIn;
 
 
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import './forms.css';
 
-// SignIn Component
 const SignIn = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({ username: '', password: '' });
 
-  // State for form data
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
-
-  // Handle input changes
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validation
     if (!formData.username || !formData.password) {
       Notiflix.Notify.failure('Username and Password are required');
       return;
     }
-
     try {
       const response = await axios.post('http://localhost:8000/login', formData);
       Notiflix.Notify.success('Login successful');
-
-      // Save user data and redirect
       localStorage.setItem('user', JSON.stringify(response.data.user));
       navigate('/logged/dashboard');
     } catch (error) {
@@ -122,56 +117,37 @@ const SignIn = () => {
 
   return (
     <div className="signup-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <h2>Welcome Back</h2>
-        <img
-          src={`${process.env.PUBLIC_URL}/images/art.png`}
-          alt="Healthcare"
-        />
-        <p>Access your personalized healthcare services by logging into your account.</p>
-      </div>
-
-      {/* Form Section */}
-      <div className="form-container">
-        <h2>Sign In</h2>
-        <form onSubmit={handleSubmit}>
-          {/* Username/Email Field */}
-          <div className="form-group">
-            <label>Username or Email</label>
-            <input
-              type="text"
-              name="username"
-              placeholder="Enter Username or Email"
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* Password Field */}
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter Password"
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* Submit Button */}
-          <button type="submit" className="signup-button">Sign In</button>
-
-          {/* Additional Links */}
-          <p className="signin-link">
-            Don't have an account? <Link to="/sign-up">Sign Up</Link>
-          </p>
-          <p className="forgot-password-link">
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </p>
-        </form>
-      </div>
+      <Sidebar />
+      <SignInForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
     </div>
   );
 };
+
+const Sidebar = () => (
+  <div className="sidebar">
+    <h2>Welcome Back</h2>
+    <img src={`${process.env.PUBLIC_URL}/images/art.png`} alt="Healthcare" />
+    <p>Access your personalized healthcare services by logging into your account.</p>
+  </div>
+);
+
+const SignInForm = ({ formData, handleChange, handleSubmit }) => (
+  <div className="form-container">
+    <h2>Sign In</h2>
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label>Username or Email</label>
+        <input type="text" name="username" placeholder="Enter Username or Email" value={formData.username} onChange={handleChange} />
+      </div>
+      <div className="form-group">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter Password" value={formData.password} onChange={handleChange} />
+      </div>
+      <button type="submit" className="signup-button">Sign In</button>
+      <p className="signin-link">Don't have an account? <Link to="/sign-up">Sign Up</Link></p>
+      <p className="forgot-password-link"><Link to="/forgot-password">Forgot Password?</Link></p>
+    </form>
+  </div>
+);
 
 export default SignIn;
