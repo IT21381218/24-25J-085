@@ -57,6 +57,12 @@ const CowProfile = () => {
         toast({ title: "Failed to update cow details", variant: "destructive" });
       }
 
+      const handleImageUpload = (e) => {
+        
+      }
+      
+      
+
     if (loading) return <p className="text-center mt-10">Loading...</p>;
 
     return (    
