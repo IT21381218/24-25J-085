@@ -78,9 +78,7 @@ const CowProfile = () => {
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
-            {/* =============================== */}
-            {/* 9. Cow Profile Picture */}
-            {/* =============================== */}
+            
             <div className="text-center">
               {imagePreview ? (
                 <Image
@@ -95,8 +93,8 @@ const CowProfile = () => {
               )}
               {editMode && <input type="file" accept="image/*" onChange={handleImageUpload} />}
             </div>
-            
-              <Label>Health Status</Label>
+
+            <Label>Health Status</Label>
               <p className={`font-semibold ${cow.health_status === "Healthy" ? "text-green-600" : "text-red-600"}`}>
                 {cow.health_status}
               </p>
