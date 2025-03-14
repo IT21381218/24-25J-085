@@ -15,8 +15,8 @@ const CowProfile = () => {
     const [formData, setFormData] = useState({});
 
     useEffect(() => {
-        if (!id) return;
-        fetch(`/api/cows/${id}`)
+        if (id) {
+            fetch(`/api/cows/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setCow(data);
