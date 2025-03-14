@@ -18,16 +18,23 @@ const CowProfile = () => {
 
     useEffect(() => {
         const fetchCowData = () => {
-        if (id) {
-          fetch(`/api/cows/${id}`)
-            .then((res) => res.json())
-            .then((data) => {
-              setCow(data);
-              setFormData(data);
-              setLoading(false);
-            })
-            .catch((err) => console.error("Error fetching cow data:", err));
-        }
+          if (id) {
+            fetch(`/api/cows/${id}`)
+              .then((res) => res.json())
+              .then((data) => {
+                setCow(data);
+                setFormData(data);
+                setLastUpdated(new Date().toLocaleTimeString());
+                setLoading(false);
+              })
+              .catch((err) => console.error("Error fetching cow data:", err));
+          }
+        };
+    
+        fetchCowData();
+        const interval = setInterval(fetchCowData, 10000); // Auto refresh every 10s
+    
+        return () => clearInterval(interval);
       }, [id]);
 
       const handleChange = (e) => {
