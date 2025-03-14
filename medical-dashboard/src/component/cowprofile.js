@@ -33,5 +33,6 @@ const CowProfile = () => {
 
       if (response.ok) {
         toast.success("Cow details updated successfully!");
+        setCow(formData);
         setEditMode(false);
       }
