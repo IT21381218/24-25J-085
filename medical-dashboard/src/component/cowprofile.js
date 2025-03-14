@@ -40,6 +40,7 @@ const CowProfile = () => {
       const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
+      
       const handleSave = async () => {
         const response = await fetch(`/api/cows/${id}`, {
           method: "PUT",
