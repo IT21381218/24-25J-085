@@ -261,43 +261,43 @@ const CustomMap = () => {
     fetchNearbyLocations();
   }, [currentLocation]);
 
-  const getCurrentLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setCurrentLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          });
-        },
-        (error) => {
-          console.error("Error fetching location:", error);
-          alert("Failed to get your location.");
-        }
-      );
-    } else {
-      alert("Geolocation is not supported by your browser.");
-    }
-  };
-
-  // const fetchNearbyLocations = async () => {
-  //   if (!currentLocation.lat || !currentLocation.lng) return;
-  //   setLoading(true);
-  //   try {
-  //     const response = await axios.post(BACKEND_URL, {
-  //       latitude: currentLocation.lat,
-  //       longitude: currentLocation.lng,
-  //     });
-  //     if (response.data.locations) {
-  //       setLocations(response.data.locations);
-  //       console.log("Nearby locations:", response.data.locations);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching nearby locations:", error);
-  //   } finally {
-  //     setLoading(false);
+  // const getCurrentLocation = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         setCurrentLocation({
+  //           lat: position.coords.latitude,
+  //           lng: position.coords.longitude,
+  //         });
+  //       },
+  //       (error) => {
+  //         console.error("Error fetching location:", error);
+  //         alert("Failed to get your location.");
+  //       }
+  //     );
+  //   } else {
+  //     alert("Geolocation is not supported by your browser.");
   //   }
   // };
+
+  const fetchNearbyLocations = async () => {
+    if (!currentLocation.lat || !currentLocation.lng) return;
+    setLoading(true);
+    try {
+      const response = await axios.post(BACKEND_URL, {
+        latitude: currentLocation.lat,
+        longitude: currentLocation.lng,
+      });
+      if (response.data.locations) {
+        setLocations(response.data.locations);
+        console.log("Nearby locations:", response.data.locations);
+      }
+    } catch (error) {
+      console.error("Error fetching nearby locations:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="recent-orders">
