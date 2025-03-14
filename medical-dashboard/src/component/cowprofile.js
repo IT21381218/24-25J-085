@@ -30,3 +30,8 @@ const CowProfile = () => {
       const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
+
+      if (response.ok) {
+        toast.success("Cow details updated successfully!");
+        setEditMode(false);
+      }
