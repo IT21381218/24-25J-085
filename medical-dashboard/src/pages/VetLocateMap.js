@@ -25,13 +25,19 @@
 
 // export default VetLocate;
 
+
+
+
+
+
+
 // pages/VetLocate.js
-import React from 'react';
-import Sidebar from '../components/Sidebar';
-import Topbar from '../components/Topbar';
-import Footer from '../components/Footer';
-import CustomMap from '../components/CustomMap';
-import InformationContainer from '../components/InformationContainer';
+// import React from 'react';
+// import Sidebar from '../components/Sidebar';
+// import Topbar from '../components/Topbar';
+// import Footer from '../components/Footer';
+// import CustomMap from '../components/CustomMap';
+// import InformationContainer from '../components/InformationContainer';
 
 // const VetLocate = () => {
 //   return (
@@ -48,5 +54,40 @@ import InformationContainer from '../components/InformationContainer';
 //     </div>
 //   );
 // };
+
+// export default VetLocate;
+
+
+
+
+
+
+
+import React from 'react';
+import Sidebar from '../components/Sidebar';
+import Topbar from '../components/Topbar';
+import Footer from '../components/Footer';
+import CustomMap from '../components/CustomMap';
+import InformationContainer from '../components/InformationContainer';
+
+const VetLocateLayout = ({ children }) => (
+  <div className="dash-container">
+    <Sidebar />
+    <div className="main-content">
+      <Topbar />
+      {children}
+      <Footer />
+    </div>
+  </div>
+);
+
+const VetLocate = () => (
+  <VetLocateLayout>
+    <div className="details">
+      <CustomMap />
+      <InformationContainer />
+    </div>
+  </VetLocateLayout>
+);
 
 export default VetLocate;
