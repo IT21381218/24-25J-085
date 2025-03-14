@@ -70,24 +70,24 @@ import Footer from '../components/Footer';
 import CustomMap from '../components/CustomMap';
 import InformationContainer from '../components/InformationContainer';
 
-const VetLocateLayout = ({ children }) => (
-  <div className="dash-container">
-    <Sidebar />
-    <div className="main-content">
-      <Topbar />
-      {children}
-      <Footer />
-    </div>
-  </div>
-);
-
-// const VetLocate = () => (
-//   <VetLocateLayout>
-//     <div className="details">
-//       <CustomMap />
-//       <InformationContainer />
+// const VetLocateLayout = ({ children }) => (
+//   <div className="dash-container">
+//     <Sidebar />
+//     <div className="main-content">
+//       <Topbar />
+//       {children}
+//       <Footer />
 //     </div>
-//   </VetLocateLayout>
+//   </div>
 // );
+
+const VetLocate = () => (
+  <VetLocateLayout>
+    <div className="details">
+      <CustomMap />
+      <InformationContainer />
+    </div>
+  </VetLocateLayout>
+);
 
 export default VetLocate;
