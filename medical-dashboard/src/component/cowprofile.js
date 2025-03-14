@@ -73,32 +73,29 @@ const CowProfile = () => {
     return (    
         <div className="max-w-3xl mx-auto mt-10 p-6">
       <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Cow Profile - ID {cow.id}</CardTitle>
+      <CardHeader>
+          <CardTitle className="text-lg">Cow Profile - ID {cow?.id}</CardTitle>
         </CardHeader>
         <CardContent>
-        <div className="grid gap-4">
-            <div>
-              <Label>Cow ID</Label>
-              <Input value={cow.id} disabled />
-            </div>
-            <div>
-              <Label>Breed</Label>
-              {editMode ? (
-                <Input name="breed" value={formData.breed} onChange={handleChange} />
+          <div className="grid gap-4">
+            {/* =============================== */}
+            {/* 9. Cow Profile Picture */}
+            {/* =============================== */}
+            <div className="text-center">
+              {imagePreview ? (
+                <Image
+                  src={imagePreview}
+                  alt="Cow Profile"
+                  width={120}
+                  height={120}
+                  className="mx-auto rounded-full"
+                />
               ) : (
-                <p className="text-gray-700">{cow.breed}</p>
+                <p className="text-gray-500">No Image Uploaded</p>
               )}
+              {editMode && <input type="file" accept="image/*" onChange={handleImageUpload} />}
             </div>
-            <div>
-              <Label>Age</Label>
-              {editMode ? (
-                <Input name="age" value={formData.age} onChange={handleChange} />
-              ) : (
-                <p className="text-gray-700">{cow.age} years</p>
-              )}
-
-<div>
+            
               <Label>Health Status</Label>
               <p className={`font-semibold ${cow.health_status === "Healthy" ? "text-green-600" : "text-red-600"}`}>
                 {cow.health_status}
