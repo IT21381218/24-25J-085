@@ -48,14 +48,14 @@ const CowProfile = () => {
       body: JSON.stringify(formData),
     });
 
-      if (response.ok) {
-        toast.success("Cow details updated successfully!");
+    if (response.ok) {
+        toast({ title: "Cow details updated successfully!" });
         setCow(formData);
         setEditMode(false);
-    } else {
+        setLastUpdated(new Date().toLocaleTimeString());
+      } else {
         toast({ title: "Failed to update cow details", variant: "destructive" });
       }
-    };
 
     if (loading) return <p className="text-center mt-10">Loading...</p>;
 
