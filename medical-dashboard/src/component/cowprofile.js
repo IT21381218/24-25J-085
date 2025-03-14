@@ -7,9 +7,5 @@ import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 
 const CowProfile = () => {  
-  const router = useRouter();
-  const [cow, setCow] = useState({
-    name: "",
-    age: "",
-    breed: "",
-    weight: "",
+    const router = useRouter();
+    const { id } = router.query;
