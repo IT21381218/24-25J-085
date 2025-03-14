@@ -100,3 +100,9 @@ const CowProfile = () => {
             <Button className="w-full mt-2" variant="outline" onClick={() => setEditMode(!editMode)}>
               {editMode ? "Cancel" : "Edit Profile"}
             </Button>
+            </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
