@@ -30,6 +30,12 @@ const CowProfile = () => {
       const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
       };
+      const handleSave = async () => {
+        const response = await fetch(`/api/cows/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
 
       if (response.ok) {
         toast.success("Cow details updated successfully!");
@@ -106,3 +112,5 @@ const CowProfile = () => {
     </div>
   );
 };
+```
+export default CowProfile;
