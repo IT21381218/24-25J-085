@@ -119,5 +119,15 @@ const CowProfile = () => {
                 <p className="text-gray-700">{cow?.age} years</p>
               )}
             </div>
+            <Label>Health Status</Label>
+              <p
+                className={`font-semibold px-3 py-1 rounded-lg ${
+                  cow?.health_status === "Healthy"
+                    ? "bg-green-200 text-green-800"
+                    : "bg-red-200 text-red-800"
+                }`}
+              >
+                {cow?.health_status}
+              </p>
+            </div>
 
-            
