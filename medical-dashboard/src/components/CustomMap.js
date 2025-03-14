@@ -138,10 +138,10 @@ const CustomMap = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          // setCurrentLocation({
-          //   lat: position.coords.latitude,
-          //   lng: position.coords.longitude,
-          // });
+          setCurrentLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
         },
         (error) => {
           console.error("Error fetching location:", error);
