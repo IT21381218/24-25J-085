@@ -103,14 +103,16 @@ const CowProfile = () => {
                 Save Changes
               </Button>
             )}
-            <Button className="w-full mt-2" variant="outline" onClick={() => setEditMode(!editMode)}>
+            <Button
+              className="w-full mt-2"
+              variant="outline"
+              onClick={() => setEditMode(!editMode)}
+            >
               {editMode ? "Cancel" : "Edit Profile"}
             </Button>
-            </div>
+          </div>
         </CardContent>
       </Card>
     </div>
   );
 };
-```
-export default CowProfile;
