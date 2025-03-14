@@ -275,10 +275,10 @@ const CustomMap = () => {
           alert("Failed to get your location.");
         }
       );
-  //   } else {
-  //     alert("Geolocation is not supported by your browser.");
-  //   }
-  // };
+    } else {
+      alert("Geolocation is not supported by your browser.");
+    }
+  };
 
   const fetchNearbyLocations = async () => {
     if (!currentLocation.lat || !currentLocation.lng) return;
