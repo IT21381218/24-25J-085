@@ -91,3 +91,12 @@ const CowProfile = () => {
                 <Label>SpO2</Label>
                 <p className="text-blue-600">{cow.spo2} %</p>
               </div>
+
+              {editMode && (
+              <Button className="w-full mt-4" onClick={handleSave}>
+                Save Changes
+              </Button>
+            )}
+            <Button className="w-full mt-2" variant="outline" onClick={() => setEditMode(!editMode)}>
+              {editMode ? "Cancel" : "Edit Profile"}
+            </Button>
