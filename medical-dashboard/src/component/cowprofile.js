@@ -26,3 +26,7 @@ const CowProfile = () => {
             .catch((err) => console.error("Error fetching cow data:", err));
         }
       }, [id]);
+
+      const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+      }
