@@ -41,3 +41,11 @@ const CowProfile = () => {
     };
 
     if (loading) return <p className="text-center mt-10">Loading...</p>;
+
+    return (    
+        <div className="max-w-3xl mx-auto mt-10 p-6"></div>
+        <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Cow Profile - ID {cow.id}</CardTitle>
+        </CardHeader>
+        <CardContent></CardContent>
