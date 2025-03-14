@@ -48,41 +48,23 @@ const SignUp = () => {
     });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (validateForm()) {
-  //     try {
-  //       console.log(formData)
-  //       const response = await axios.post('http://localhost:8000/register', formData);
-  //       Notiflix.Notify.success('Registration successful');
-  //       navigate('/sign-in')
-  //     } catch (error) {
-  //       Notiflix.Notify.failure('Registration failed');
-  //     }
-  //   } else {
-  //     Object.values(errors).forEach(error => Notiflix.Notify.failure(error));
-  //   }
-  // };
-
-  //new handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    if (!validateForm()) {
-      Object.values(errors).forEach((error) => Notiflix.Notify.failure(error));
-      return;
-    }
-  
-    try {
-      console.log(formData);
-      const response = await axios.post('http://localhost:8000/register', formData);
-      Notiflix.Notify.success('Registration successful');
-      navigate('/sign-in');
-    } catch (error) {
-      Notiflix.Notify.failure('Registration failed');
+    if (validateForm()) {
+      try {
+        console.log(formData)
+        const response = await axios.post('http://localhost:8000/register', formData);
+        Notiflix.Notify.success('Registration successful');
+        navigate('/sign-in')
+      } catch (error) {
+        Notiflix.Notify.failure('Registration failed');
+      }
+    } else {
+      Object.values(errors).forEach(error => Notiflix.Notify.failure(error));
     }
   };
-  
+
+ 
 
   //Signup
   return (
