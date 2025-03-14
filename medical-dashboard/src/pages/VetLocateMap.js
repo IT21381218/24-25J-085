@@ -81,13 +81,13 @@ const VetLocateLayout = ({ children }) => (
   </div>
 );
 
-const VetLocate = () => (
-  <VetLocateLayout>
-    <div className="details">
-      <CustomMap />
-      <InformationContainer />
-    </div>
-  </VetLocateLayout>
-);
+// const VetLocate = () => (
+//   <VetLocateLayout>
+//     <div className="details">
+//       <CustomMap />
+//       <InformationContainer />
+//     </div>
+//   </VetLocateLayout>
+// );
 
 export default VetLocate;
