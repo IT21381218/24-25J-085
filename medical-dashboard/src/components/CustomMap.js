@@ -304,7 +304,7 @@ const CustomMap = () => {
       <div className="card-header">
         <h2>Your Current Location</h2>
       </div>
-      <div style={{ height: "600px", width: "100%" }}>
+      {/* <div style={{ height: "600px", width: "100%" }}>
         <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
           <GoogleMap mapContainerStyle={{ height: "100%", width: "100%" }} center={currentLocation} zoom={15}>
             <Marker position={currentLocation} />
@@ -315,7 +315,7 @@ const CustomMap = () => {
                 icon={MARKER_ICON}
                 onClick={() => setSelectedLocation(location)}
               />
-            ))}
+            ))} */}
             {selectedLocation && (
               <InfoWindow
                 position={{
