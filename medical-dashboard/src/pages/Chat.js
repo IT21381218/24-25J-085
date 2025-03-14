@@ -7,19 +7,19 @@ const ChatSection = ({ selectedVet }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
-  useEffect(() => {
-    if (selectedVet) {
-      setMessages([{ text: `You are now chatting with Dr. ${selectedVet.name}`, sender: 'system' }]);
-    }
-  }, [selectedVet]);
+//   useEffect(() => {
+//     if (selectedVet) {
+//       setMessages([{ text: `You are now chatting with Dr. ${selectedVet.name}`, sender: 'system' }]);
+//     }
+//   }, [selectedVet]);
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    if (input.trim()) {
-      setMessages([...messages, { text: input, sender: 'user' }]);
-      setInput('');
-    }
-  };
+//   const handleSendMessage = (e) => {
+//     e.preventDefault();
+//     if (input.trim()) {
+//       setMessages([...messages, { text: input, sender: 'user' }]);
+//       setInput('');
+//     }
+//   };
 
   return (
     <div className="dash-container">
