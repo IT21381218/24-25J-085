@@ -78,3 +78,7 @@ const CowProfile = () => {
             </div>
 
             <div className="grid grid-cols-3 gap-4"></div>
+            <div>
+                <Label>Temperature</Label>
+                <p className="text-blue-600">{cow.temperature} °C</p>
+              </div>
