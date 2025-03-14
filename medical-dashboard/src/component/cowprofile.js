@@ -82,3 +82,8 @@ const CowProfile = () => {
                 <Label>Temperature</Label>
                 <p className="text-blue-600">{cow.temperature} °C</p>
               </div>
+
+              <div>
+                <Label>Heart Rate</Label>
+                <p className="text-blue-600">{cow.heart_rate} BPM</p>
+              </div>
