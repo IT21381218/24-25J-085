@@ -49,3 +49,23 @@ const CowProfile = () => {
           <CardTitle className="text-lg">Cow Profile - ID {cow.id}</CardTitle>
         </CardHeader>
         <CardContent>
+        <div className="grid gap-4">
+            <div>
+              <Label>Cow ID</Label>
+              <Input value={cow.id} disabled />
+            </div>
+            <div>
+              <Label>Breed</Label>
+              {editMode ? (
+                <Input name="breed" value={formData.breed} onChange={handleChange} />
+              ) : (
+                <p className="text-gray-700">{cow.breed}</p>
+              )}
+            </div>
+            <div>
+              <Label>Age</Label>
+              {editMode ? (
+                <Input name="age" value={formData.age} onChange={handleChange} />
+              ) : (
+                <p className="text-gray-700">{cow.age} years</p>
+              )}
