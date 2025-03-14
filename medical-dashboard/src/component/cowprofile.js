@@ -12,3 +12,4 @@ const CowProfile = () => {
     const [cow, setCow] = useState(null);
     const [loading, setLoading] = useState(true);
     const [editMode, setEditMode] = useState(false);
+    const [formData, setFormData] = useState({});
