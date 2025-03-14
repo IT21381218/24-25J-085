@@ -261,24 +261,24 @@ const CustomMap = () => {
     fetchNearbyLocations();
   }, [currentLocation]);
 
-  // const getCurrentLocation = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         setCurrentLocation({
-  //           lat: position.coords.latitude,
-  //           lng: position.coords.longitude,
-  //         });
-  //       },
-  //       (error) => {
-  //         console.error("Error fetching location:", error);
-  //         alert("Failed to get your location.");
-  //       }
-  //     );
-  //   } else {
-  //     alert("Geolocation is not supported by your browser.");
-  //   }
-  // };
+  const getCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setCurrentLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error("Error fetching location:", error);
+          alert("Failed to get your location.");
+        }
+      );
+    } else {
+      alert("Geolocation is not supported by your browser.");
+    }
+  };
 
   const fetchNearbyLocations = async () => {
     if (!currentLocation.lat || !currentLocation.lng) return;
