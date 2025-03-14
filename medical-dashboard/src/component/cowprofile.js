@@ -35,4 +35,9 @@ const CowProfile = () => {
         toast.success("Cow details updated successfully!");
         setCow(formData);
         setEditMode(false);
+    } else {
+        toast({ title: "Failed to update cow details", variant: "destructive" });
       }
+    };
+
+    if (loading) return <p className="text-center mt-10">Loading...</p>;
