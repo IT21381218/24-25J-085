@@ -110,13 +110,13 @@ const ChatSection = ({ selectedVet }) => {
   );
 };
 
-const VetProfile = ({ vet }) => (
-  <div className="vet-profile">
-    <h3>Chat with Dr. {vet.name}</h3>
-    <p>Specialty: {vet.specialty}</p>
-    <p>Location: {vet.location}</p>
-  </div>
-);
+// const VetProfile = ({ vet }) => (
+//   <div className="vet-profile">
+//     <h3>Chat with Dr. {vet.name}</h3>
+//     <p>Specialty: {vet.specialty}</p>
+//     <p>Location: {vet.location}</p>
+//   </div>
+// );
 
 const ChatBox = ({ messages }) => (
   <div className="chat-box">
