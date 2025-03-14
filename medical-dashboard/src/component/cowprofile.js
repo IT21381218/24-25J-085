@@ -100,36 +100,24 @@ const CowProfile = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4"></div>
+            <Label>Cow ID</Label>
+              <Input value={cow?.id || ""} disabled />
+            </div>
             <div>
+              <Label>Breed</Label>
+              {editMode ? (
+                <Input name="breed" value={formData.breed || ""} onChange={handleChange} />
+              ) : (
+                <p className="text-gray-700">{cow?.breed}</p>
+              )}
+            </div>
             <div>
-                <Label>Temperature</Label>
-                <p className="text-blue-600">{cow.temperature} °C</p>
-              </div>
-              <div>
-                <Label>Heart Rate</Label>
-                <p className="text-blue-600">{cow.heart_rate} BPM</p>
-              </div>
-              <div>
-                <Label>SpO2</Label>
-                <p className="text-blue-600">{cow.spo2} %</p>
-              </div>
+              <Label>Age</Label>
+              {editMode ? (
+                <Input name="age" value={formData.age || ""} onChange={handleChange} />
+              ) : (
+                <p className="text-gray-700">{cow?.age} years</p>
+              )}
+            </div>
 
-              {editMode && (
-              <Button className="w-full mt-4" onClick={handleSave}>
-                Save Changes
-              </Button>
-            )}
-            <Button
-              className="w-full mt-2"
-              variant="outline"
-              onClick={() => setEditMode(!editMode)}
-            >
-              {editMode ? "Cancel" : "Edit Profile"}
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  );
-};
+            
