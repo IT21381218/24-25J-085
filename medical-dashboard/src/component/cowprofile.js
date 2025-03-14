@@ -17,6 +17,7 @@ const CowProfile = () => {
     const [imagePreview, setImagePreview] = useState(null);
 
     useEffect(() => {
+        const fetchCowData = () => {
         if (id) {
           fetch(`/api/cows/${id}`)
             .then((res) => res.json())
