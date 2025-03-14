@@ -9,3 +9,5 @@ import { toast } from "@/components/ui/use-toast";
 const CowProfile = () => {  
     const router = useRouter();
     const { id } = router.query;
+    const [cow, setCow] = useState(null);
+    const [loading, setLoading] = useState(true);
