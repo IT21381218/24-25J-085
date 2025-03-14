@@ -13,6 +13,8 @@ const CowProfile = () => {
     const [loading, setLoading] = useState(true);
     const [editMode, setEditMode] = useState(false);
     const [formData, setFormData] = useState({});
+    const [lastUpdated, setLastUpdated] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
 
     useEffect(() => {
         if (id) {
