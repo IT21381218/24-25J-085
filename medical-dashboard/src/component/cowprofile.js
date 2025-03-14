@@ -76,3 +76,5 @@ const CowProfile = () => {
                 {cow.health_status}
               </p>
             </div>
+
+            <div className="grid grid-cols-3 gap-4"></div>
