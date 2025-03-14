@@ -79,11 +79,7 @@ const CowProfile = () => {
 
             <div className="grid grid-cols-3 gap-4"></div>
             <div>
+            <div>
                 <Label>Temperature</Label>
                 <p className="text-blue-600">{cow.temperature} °C</p>
-              </div>
-
-              <div>
-                <Label>Heart Rate</Label>
-                <p className="text-blue-600">{cow.heart_rate} BPM</p>
               </div>
