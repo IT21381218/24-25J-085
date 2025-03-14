@@ -19,27 +19,27 @@ const SignUp = () => {
 
   const [errors, setErrors] = useState({});
 
-  // //email validation
-  // const validateEmail = (email) => {
-  //   const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  //   return re.test(String(email).toLowerCase());
-  // };
-
-  const validateForm = () => {
-    let formErrors = {};
-    if (!formData.username) formErrors.username = 'Username is required';
-    if (!formData.full_name) formErrors.full_name = 'Full Name is required';
-    if (!formData.address) formErrors.address = 'Address is required';
-    if (!formData.email) formErrors.email = 'Email is required';
-    if (!validateEmail(formData.email)) formErrors.email = 'Invalid email';
-    if (!formData.contact) formErrors.contact = 'Contact number is required';
-    if (formData.contact.length !== 10) formErrors.contact = 'Contact number must be 10 characters';
-    if (!formData.password) formErrors.password = 'Password is required';
-    if (formData.password !== formData.confirmPassword) formErrors.confirmPassword = 'Passwords do not match';
-    if (!formData.nic) formErrors.nic = 'NIC is required';
-    setErrors(formErrors);
-    return Object.keys(formErrors).length === 0;
+  //email validation
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
   };
+
+  // const validateForm = () => {
+  //   let formErrors = {};
+  //   if (!formData.username) formErrors.username = 'Username is required';
+  //   if (!formData.full_name) formErrors.full_name = 'Full Name is required';
+  //   if (!formData.address) formErrors.address = 'Address is required';
+  //   if (!formData.email) formErrors.email = 'Email is required';
+  //   if (!validateEmail(formData.email)) formErrors.email = 'Invalid email';
+  //   if (!formData.contact) formErrors.contact = 'Contact number is required';
+  //   if (formData.contact.length !== 10) formErrors.contact = 'Contact number must be 10 characters';
+  //   if (!formData.password) formErrors.password = 'Password is required';
+  //   if (formData.password !== formData.confirmPassword) formErrors.confirmPassword = 'Passwords do not match';
+  //   if (!formData.nic) formErrors.nic = 'NIC is required';
+  //   setErrors(formErrors);
+  //   return Object.keys(formErrors).length === 0;
+  // };
 
   const handleChange = (e) => {
     setFormData({
