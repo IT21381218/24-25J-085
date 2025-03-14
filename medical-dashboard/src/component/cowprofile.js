@@ -13,3 +13,13 @@ const CowProfile = () => {
     const [loading, setLoading] = useState(true);
     const [editMode, setEditMode] = useState(false);
     const [formData, setFormData] = useState({});
+
+    useEffect(() => {
+        if (!id) return;
+        fetch(`/api/cows/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setCow(data);
+                setLoading(false);
+            });
+    }
