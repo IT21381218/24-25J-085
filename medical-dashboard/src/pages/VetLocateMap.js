@@ -33,20 +33,20 @@ import Footer from '../components/Footer';
 import CustomMap from '../components/CustomMap';
 import InformationContainer from '../components/InformationContainer';
 
-const VetLocate = () => {
-  return (
-    <div className="dash-container">
-      <Sidebar />
-      <div className="main-content">
-        <Topbar />
-        <div className="details">
-          <CustomMap />
-          <InformationContainer />
-        </div>
-        <Footer />
-      </div>
-    </div>
-  );
-};
+// const VetLocate = () => {
+//   return (
+//     <div className="dash-container">
+//       <Sidebar />
+//       <div className="main-content">
+//         <Topbar />
+//         <div className="details">
+//           <CustomMap />
+//           <InformationContainer />
+//         </div>
+//         <Footer />
+//       </div>
+//     </div>
+//   );
+// };
 
 export default VetLocate;
