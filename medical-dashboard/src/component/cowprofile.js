@@ -16,10 +16,13 @@ const CowProfile = () => {
 
     useEffect(() => {
         if (id) {
-            fetch(`/api/cows/${id}`)
+          fetch(`/api/cows/${id}`)
             .then((res) => res.json())
             .then((data) => {
-                setCow(data);
-                setLoading(false);
-            });
-    }
+              setCow(data);
+              setFormData(data);
+              setLoading(false);
+            })
+            .catch((err) => console.error("Error fetching cow data:", err));
+        }
+      }, [id]);
