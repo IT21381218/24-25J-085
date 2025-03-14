@@ -66,61 +66,61 @@ const SignUp = () => {
 
  
 
-  //Signup
-  return (
-    <div className="signup-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <h2>Join Us</h2>
-        <img src={`${process.env.PUBLIC_URL}/images/art.png`} alt="Healthcare" />
-        <p>Access personalized healthcare services and resources by creating an account with us.</p>
-      </div>
+  // //Signup
+  // return (
+  //   <div className="signup-container">
+  //     {/* Sidebar */}
+  //     <div className="sidebar">
+  //       <h2>Join Us</h2>
+  //       <img src={`${process.env.PUBLIC_URL}/images/art.png`} alt="Healthcare" />
+  //       <p>Access personalized healthcare services and resources by creating an account with us.</p>
+  //     </div>
 
-      {/* Form Section */}
-      <div className="form-container">
-        <h2>Create an Account</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Username</label>
-            <input type="text" name="username" placeholder="Enter Username" value={formData.username} onChange={handleChange} />
-          </div>
+  //     {/* Form Section */}
+  //     <div className="form-container">
+  //       <h2>Create an Account</h2>
+  //       <form onSubmit={handleSubmit}>
+  //         <div className="form-group">
+  //           <label>Username</label>
+  //           <input type="text" name="username" placeholder="Enter Username" value={formData.username} onChange={handleChange} />
+  //         </div>
 
-          <div className="form-group">
-            <label>Full Name</label>
-            <input type="text" name="full_name" placeholder="Enter Full Name" value={formData.full_name} onChange={handleChange} />
-          </div>
+  //         <div className="form-group">
+  //           <label>Full Name</label>
+  //           <input type="text" name="full_name" placeholder="Enter Full Name" value={formData.full_name} onChange={handleChange} />
+  //         </div>
 
-          <div className="form-group">
-            <label>Address</label>
-            <input type="text" name="address" placeholder="Enter Address" value={formData.address} onChange={handleChange} />
-          </div>
+  //         <div className="form-group">
+  //           <label>Address</label>
+  //           <input type="text" name="address" placeholder="Enter Address" value={formData.address} onChange={handleChange} />
+  //         </div>
 
-          <div className="form-group">
-            <label>NIC</label>
-            <input type="text" name="nic" placeholder="Enter NIC" value={formData.nic} onChange={handleChange} />
-          </div>
+  //         <div className="form-group">
+  //           <label>NIC</label>
+  //           <input type="text" name="nic" placeholder="Enter NIC" value={formData.nic} onChange={handleChange} />
+  //         </div>
 
-          <div className="form-group row">
-            <div className="column">
-              <label>Email</label>
-              <input type="email" name="email" placeholder="Enter Email" value={formData.email} onChange={handleChange} />
-            </div>
-            <div className="column">
-              <label>Contact Number</label>
-              <input type="tel" name="contact" placeholder="Enter Contact Number" value={formData.contact} onChange={handleChange} />
-            </div>
-          </div>
+  //         <div className="form-group row">
+  //           <div className="column">
+  //             <label>Email</label>
+  //             <input type="email" name="email" placeholder="Enter Email" value={formData.email} onChange={handleChange} />
+  //           </div>
+  //           <div className="column">
+  //             <label>Contact Number</label>
+  //             <input type="tel" name="contact" placeholder="Enter Contact Number" value={formData.contact} onChange={handleChange} />
+  //           </div>
+  //         </div>
 
-          <div className="form-group row">
-            <div className="column">
-              <label>Password</label>
-              <input type="password" name="password" placeholder="Enter Password" value={formData.password} onChange={handleChange} />
-            </div>
-            <div className="column">
-              <label>Confirm Password</label>
-              <input type="password" name="confirmPassword" placeholder="Retype Password" value={formData.confirmPassword} onChange={handleChange} />
-            </div>
-          </div>
+  //         <div className="form-group row">
+  //           <div className="column">
+  //             <label>Password</label>
+  //             <input type="password" name="password" placeholder="Enter Password" value={formData.password} onChange={handleChange} />
+  //           </div>
+  //           <div className="column">
+  //             <label>Confirm Password</label>
+  //             <input type="password" name="confirmPassword" placeholder="Retype Password" value={formData.confirmPassword} onChange={handleChange} />
+  //           </div>
+  //         </div>
 
 
         
