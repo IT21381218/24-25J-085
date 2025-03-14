@@ -240,12 +240,12 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import axios from 'axios';
 
-const GOOGLE_MAPS_API_KEY = "AIzaSyDAsJYZSQ92_NQAz9kiSpW1XpyuCxRl_uI";
-const BACKEND_URL = "http://localhost:8000/nearby_locations";
-const MARKER_ICON = {
-  url: "https://static.vecteezy.com/system/resources/thumbnails/019/897/155/small/location-pin-icon-map-pin-place-marker-png.png",
-  scaledSize: new window.google.maps.Size(30, 30),
-};
+// const GOOGLE_MAPS_API_KEY = "AIzaSyDAsJYZSQ92_NQAz9kiSpW1XpyuCxRl_uI";
+// const BACKEND_URL = "http://localhost:8000/nearby_locations";
+// const MARKER_ICON = {
+//   url: "https://static.vecteezy.com/system/resources/thumbnails/019/897/155/small/location-pin-icon-map-pin-place-marker-png.png",
+//   scaledSize: new window.google.maps.Size(30, 30),
+// };
 
 const CustomMap = () => {
   const [currentLocation, setCurrentLocation] = useState({ lat: 0, lng: 0 });
