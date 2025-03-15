@@ -118,15 +118,15 @@ const VetProfile = ({ vet }) => (
   </div>
 );
 
-const ChatBox = ({ messages }) => (
-  <div className="chat-box">
-    {messages.map((msg, index) => (
-      <div key={index} className={`chat-message ${msg.sender}`}>
-        {msg.text}
-      </div>
-    ))}
-  </div>
-);
+// const ChatBox = ({ messages }) => (
+//   <div className="chat-box">
+//     {messages.map((msg, index) => (
+//       <div key={index} className={`chat-message ${msg.sender}`}>
+//         {msg.text}
+//       </div>
+//     ))}
+//   </div>
+// );
 
 const ChatInput = ({ input, setInput, handleSendMessage }) => (
   <form className="chat-input" onSubmit={handleSendMessage}>
