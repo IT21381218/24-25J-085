@@ -418,8 +418,8 @@ import requests
 
 app = FastAPI()
 
-GOOGLE_API_KEY = "your_google_api_key"
-GOOGLE_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+# GOOGLE_API_KEY = "your_google_api_key"
+# GOOGLE_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 
 class Location(BaseModel):
     latitude: float
