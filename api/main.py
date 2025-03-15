@@ -76,19 +76,19 @@ class FaceID(BaseModel):
 
 users_db = {}
 
-# @app.post("/register")
-# async def register_user(user: User):
-#     user_ref = db.collection("users").document(user.username)
-#     if user_ref.get().exists:
-#         raise HTTPException(status_code=400, detail="Username already registered")
+@app.post("/register")
+async def register_user(user: User):
+    user_ref = db.collection("users").document(user.username)
+    if user_ref.get().exists:
+        raise HTTPException(status_code=400, detail="Username already registered")
 
-#     # Hash the password before storing it
-#     hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt())
-#     user_data = user.dict()
-#     user_data["password"] = hashed_password.decode('utf-8')
+    # Hash the password before storing it
+    hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt())
+    user_data = user.dict()
+    user_data["password"] = hashed_password.decode('utf-8')
 
-#     user_ref.set(user_data)
-#     return {"message": "User registered successfully", "user": user_data}
+    user_ref.set(user_data)
+    return {"message": "User registered successfully", "user": user_data}
 
 
 from fastapi import HTTPException, APIRouter
