@@ -76,19 +76,55 @@ class FaceID(BaseModel):
 
 users_db = {}
 
+# @app.post("/register")
+# async def register_user(user: User):
+#     user_ref = db.collection("users").document(user.username)
+#     if user_ref.get().exists:
+#         raise HTTPException(status_code=400, detail="Username already registered")
+
+#     # Hash the password before storing it
+#     hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt())
+#     user_data = user.dict()
+#     user_data["password"] = hashed_password.decode('utf-8')
+
+#     user_ref.set(user_data)
+#     return {"message": "User registered successfully", "user": user_data}
+
+
+from fastapi import HTTPException, APIRouter
+import bcrypt
+from firebase_admin import firestore
+from models import User  # Assuming User model is defined in models.py
+
+app = APIRouter()
+db = firestore.client()
+
+def get_user_from_db(username: str):
+    """Check if a user already exists in Firestore."""
+    user_ref = db.collection("users").document(username)
+    return user_ref if user_ref.get().exists else None
+
+def hash_password(password: str) -> str:
+    """Hash the password securely using bcrypt."""
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
 @app.post("/register")
 async def register_user(user: User):
-    user_ref = db.collection("users").document(user.username)
-    if user_ref.get().exists:
+    """Register a new user by storing their hashed password in Firestore."""
+    if get_user_from_db(user.username):
         raise HTTPException(status_code=400, detail="Username already registered")
 
-    # Hash the password before storing it
-    hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt())
     user_data = user.dict()
-    user_data["password"] = hashed_password.decode('utf-8')
+    user_data["password"] = hash_password(user.password)
 
-    user_ref.set(user_data)
+    # Store user data in Firestore
+    db.collection("users").document(user.username).set(user_data)
+
+    user_data.pop("password")  # Ensure password is not exposed
     return {"message": "User registered successfully", "user": user_data}
+
+
+
 
 # @app.post("/login")
 # async def login_user(user: LoginUser):
