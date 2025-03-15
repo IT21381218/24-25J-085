@@ -90,23 +90,56 @@ async def register_user(user: User):
     user_ref.set(user_data)
     return {"message": "User registered successfully", "user": user_data}
 
+# @app.post("/login")
+# async def login_user(user: LoginUser):
+#     user_ref = db.collection("users").document(user.username)
+#     user_doc = user_ref.get()
+
+#     if not user_doc.exists:
+#         raise HTTPException(status_code=400, detail="Invalid username or password")
+
+#     user_data = user_doc.to_dict()
+    
+#     # Check the hashed password
+#     if not bcrypt.checkpw(user.password.encode('utf-8'), user_data["password"].encode('utf-8')):
+#         raise HTTPException(status_code=400, detail="Invalid username or password")
+
+#     user_data.pop("password")  # Remove the password field from the response
+
+#     return {"message": "Login successful", "user": user_data}
+
+
+    from fastapi import HTTPException, APIRouter
+import bcrypt
+from firebase_admin import firestore
+from models import LoginUser  # Assuming you have a models.py where LoginUser is defined
+
+app = APIRouter()
+db = firestore.client()
+
+def get_user_from_db(username: str):
+    """Retrieve user data from Firestore."""
+    user_ref = db.collection("users").document(username)
+    user_doc = user_ref.get()
+    return user_doc.to_dict() if user_doc.exists else None
+
+def verify_password(plain_password: str, hashed_password: str):
+    """Verify if the provided password matches the hashed password."""
+    return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
+
 @app.post("/login")
 async def login_user(user: LoginUser):
-    user_ref = db.collection("users").document(user.username)
-    user_doc = user_ref.get()
-
-    if not user_doc.exists:
-        raise HTTPException(status_code=400, detail="Invalid username or password")
-
-    user_data = user_doc.to_dict()
+    """Authenticate the user by validating username and password."""
+    user_data = get_user_from_db(user.username)
     
-    # Check the hashed password
-    if not bcrypt.checkpw(user.password.encode('utf-8'), user_data["password"].encode('utf-8')):
+    if not user_data or not verify_password(user.password, user_data["password"]):
         raise HTTPException(status_code=400, detail="Invalid username or password")
 
-    user_data.pop("password")  # Remove the password field from the response
-
+    user_data.pop("password")  # Ensure password is not exposed
     return {"message": "Login successful", "user": user_data}
+
+
+
 
 # Predict Pests and Diseases
 @app.post("/predict-pest")
