@@ -128,17 +128,17 @@ const ChatBox = ({ messages }) => (
   </div>
 );
 
-const ChatInput = ({ input, setInput, handleSendMessage }) => (
-  <form className="chat-input" onSubmit={handleSendMessage}>
-    <input
-      type="text"
-      value={input}
-      onChange={(e) => setInput(e.target.value)}
-      placeholder="Type a message..."
-    />
-    <button type="submit">Send</button>
-  </form>
-);
+// const ChatInput = ({ input, setInput, handleSendMessage }) => (
+//   <form className="chat-input" onSubmit={handleSendMessage}>
+//     <input
+//       type="text"
+//       value={input}
+//       onChange={(e) => setInput(e.target.value)}
+//       placeholder="Type a message..."
+//     />
+//     <button type="submit">Send</button>
+//   </form>
+// );
 
 export default ChatSection;
 
