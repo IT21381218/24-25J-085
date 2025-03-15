@@ -378,84 +378,36 @@ async def predict_milk_production(request: MilkProductionRequest):
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
     
 
-# Locate Vets   
-# class Location(BaseModel):
-#     latitude: float
-#     longitude: float
-
-# def get_nearby_locations(latitude: float, longitude: float, radius: int = 5000):
-#     location = f"{latitude},{longitude}"
-#     params = {
-#         "location": location,
-#         "radius": radius,
-#         "type": "veterinary_care",  # You can change this to other types such as 'hospital', etc.
-#         "key": GOOGLE_API_KEY
-#     }
-#     response = requests.get(GOOGLE_PLACES_URL, params=params)
-    
-#     if response.status_code == 200:
-#         data = response.json()
-#         locations = []
-#         for result in data.get('results', []):
-#             locations.append({
-#                 'name': result['name'],
-#                 'address': result['vicinity'],
-#                 'location': result['geometry']['location']
-#             })
-#         return locations
-#     else:
-#         return {"error": "Failed to retrieve data from Google Places API"}
-
-# @app.post("/nearby_locations")
-# async def nearby_locations(location: Location):
-#     locations = get_nearby_locations(location.latitude, location.longitude)
-#     return {"locations": locations}
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-import requests
-
-app = FastAPI()
-
-# GOOGLE_API_KEY = "your_google_api_key"
-# GOOGLE_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-
+#Locate Vets   
 class Location(BaseModel):
     latitude: float
     longitude: float
 
-def fetch_nearby_places(latitude: float, longitude: float, radius: int = 5000):
-    """Fetch nearby veterinary care locations from Google Places API."""
+def get_nearby_locations(latitude: float, longitude: float, radius: int = 5000):
+    location = f"{latitude},{longitude}"
     params = {
-        "location": f"{latitude},{longitude}",
+        "location": location,
         "radius": radius,
-        "type": "veterinary_care",
+        "type": "veterinary_care",  # You can change this to other types such as 'hospital', etc.
         "key": GOOGLE_API_KEY
     }
     response = requests.get(GOOGLE_PLACES_URL, params=params)
     
-    if response.status_code != 200:
-        raise HTTPException(status_code=500, detail="Failed to retrieve data from Google Places API")
-    
-    return response.json()
-
-def parse_location_data(data):
-    """Extract relevant location details from the API response."""
-    locations = []
-    for result in data.get("results", []):
-        locations.append({
-            "name": result.get("name", "Unknown"),
-            "address": result.get("vicinity", "Address not available"),
-            "location": result.get("geometry", {}).get("location", {}),
-        })
-    return locations
-
-def get_nearby_locations(latitude: float, longitude: float, radius: int = 5000):
-    """Retrieve and parse nearby veterinary locations."""
-    data = fetch_nearby_places(latitude, longitude, radius)
-    return parse_location_data(data)
+    if response.status_code == 200:
+        data = response.json()
+        locations = []
+        for result in data.get('results', []):
+            locations.append({
+                'name': result['name'],
+                'address': result['vicinity'],
+                'location': result['geometry']['location']
+            })
+        return locations
+    else:
+        return {"error": "Failed to retrieve data from Google Places API"}
 
 @app.post("/nearby_locations")
 async def nearby_locations(location: Location):
-    """API endpoint to get nearby veterinary locations."""
     locations = get_nearby_locations(location.latitude, location.longitude)
     return {"locations": locations}
+
