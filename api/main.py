@@ -393,18 +393,18 @@ def get_nearby_locations(latitude: float, longitude: float, radius: int = 5000):
     }
     response = requests.get(GOOGLE_PLACES_URL, params=params)
     
-    if response.status_code == 200:
-        data = response.json()
-        locations = []
-        for result in data.get('results', []):
-            locations.append({
-                'name': result['name'],
-                'address': result['vicinity'],
-                'location': result['geometry']['location']
-            })
-        return locations
-    else:
-        return {"error": "Failed to retrieve data from Google Places API"}
+    # if response.status_code == 200:
+    #     data = response.json()
+    #     locations = []
+    #     for result in data.get('results', []):
+    #         locations.append({
+    #             'name': result['name'],
+    #             'address': result['vicinity'],
+    #             'location': result['geometry']['location']
+    #         })
+    #     return locations
+    # else:
+    #     return {"error": "Failed to retrieve data from Google Places API"}
 
 @app.post("/nearby_locations")
 async def nearby_locations(location: Location):
