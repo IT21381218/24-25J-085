@@ -124,25 +124,23 @@ async def register_user(user: User):
     return {"message": "User registered successfully", "user": user_data}
 
 
+@app.post("/login")
+async def login_user(user: LoginUser):
+    user_ref = db.collection("users").document(user.username)
+    user_doc = user_ref.get()
 
+    if not user_doc.exists:
+        raise HTTPException(status_code=400, detail="Invalid username or password")
 
-# @app.post("/login")
-# async def login_user(user: LoginUser):
-#     user_ref = db.collection("users").document(user.username)
-#     user_doc = user_ref.get()
-
-#     if not user_doc.exists:
-#         raise HTTPException(status_code=400, detail="Invalid username or password")
-
-#     user_data = user_doc.to_dict()
+    user_data = user_doc.to_dict()
     
-#     # Check the hashed password
-#     if not bcrypt.checkpw(user.password.encode('utf-8'), user_data["password"].encode('utf-8')):
-#         raise HTTPException(status_code=400, detail="Invalid username or password")
+    # Check the hashed password
+    if not bcrypt.checkpw(user.password.encode('utf-8'), user_data["password"].encode('utf-8')):
+        raise HTTPException(status_code=400, detail="Invalid username or password")
 
-#     user_data.pop("password")  # Remove the password field from the response
+    user_data.pop("password")  # Remove the password field from the response
 
-#     return {"message": "Login successful", "user": user_data}
+    return {"message": "Login successful", "user": user_data}
 
 
     from fastapi import HTTPException, APIRouter
