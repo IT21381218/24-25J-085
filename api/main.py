@@ -42,7 +42,11 @@ GOOGLE_API_KEY = 'AIzaSyDAsJYZSQ92_NQAz9kiSpW1XpyuCxRl_uI'
 GOOGLE_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 
 
+<<<<<<< HEAD
 # Load MOdels Health
+=======
+# LoadMOdelsHealth
+>>>>>>> origin/Dasunika
 MODEL_HEALTH = joblib.load('model_health_random_f_classifier.joblib')
 LABEL_ENCODER =  joblib.load('label_encoder_health_status.joblib')
 
@@ -54,7 +58,11 @@ except FileNotFoundError:
     raise Exception("Model file not found. Ensure the decision_tree_model.joblib file is in the same directory.")
 
 
+<<<<<<< HEAD
 # Load Pest detection Models
+=======
+
+>>>>>>> origin/Dasunika
 # Load Pest detection Models
 MODEL_PESTS = load_model("model_pests_detect.h5")
 CLASS_PESTS = ['Mastitis', ' Tick Infestation', 'Dermatophytosis (RINGWORM)', 'Fly Strike (MYIASIS)', 'Foot and Mouth disease', 'Lumpy Skin', 'Black Quarter (BQ)', 'Parasitic Mange']
@@ -109,7 +117,11 @@ async def login_user(user: LoginUser):
     user_data.pop("password")  # Remove the password field from the response
 
     return {"message": "Login successful", "user": user_data}
+<<<<<<< HEAD
     # return {"message": "Login successful", "user": user_data}
+=======
+
+>>>>>>> origin/Dasunika
 # Predict Pests and Diseases
 @app.post("/predict-pest")
 async def predict_pest(file: UploadFile = File(...)):
@@ -146,6 +158,7 @@ async def predict_pest(file: UploadFile = File(...)):
     except Exception as e:
         os.remove(file_path)  # Clean up the uploaded file in case of error
         raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
+<<<<<<< HEAD
         #     except Exception as e:
         # os.remove(file_path)  # Clean up the uploaded file in case of error
         # raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
@@ -187,6 +200,8 @@ async def predict_pest(file: UploadFile = File(...)):
 #         os.remove(file_path)  # Clean up the uploaded file in case of error
 #         raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
 
+=======
+>>>>>>> origin/Dasunika
 
 # Predict Cow Health
 class HealthStatusInput(BaseModel):
@@ -239,6 +254,7 @@ async def predict_health_status(input_data: HealthStatusInput):
         raise HTTPException(status_code=500, detail=f"An error occurred during prediction: {str(e)}")
     
 
+<<<<<<< HEAD
 
 # Milk Quality Monitor
 class MilkQualityInput(BaseModel):
@@ -249,6 +265,17 @@ class MilkQualityInput(BaseModel):
     Fat: float
     Turbidity: int
     Colour: int
+=======
+# Predict grade
+class MilkQualityInput(BaseModel):
+        pH: float
+        Temperature: float
+        Taste: int 
+        Odor: int 
+        Fat: float
+        Turbidity: int 
+        Colour: int
+>>>>>>> origin/Dasunika
 
 # Define grade mapping
 grade_mapping = {0: "high", 1: "low", 2: "medium"}
@@ -271,7 +298,11 @@ async def predict_milk_grade(input_data: MilkQualityInput):
         - Predicted Grade: "high", "medium", or "low"
     """
     try:
+<<<<<<< HEAD
         # Prepare the input for prediction
+=======
+      # Prepare input for prediction  
+>>>>>>> origin/Dasunika
         input_array = np.array([
             [
                 input_data.pH,
@@ -293,7 +324,11 @@ async def predict_milk_grade(input_data: MilkQualityInput):
         if predicted_grade_category is None:
             raise ValueError("Invalid prediction received from the model.")
 
+<<<<<<< HEAD
         return {"predicted_grade": predicted_grade_category}
+=======
+        return {" predicted_grade ": predicted_grade_category}
+>>>>>>> origin/Dasunika
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
@@ -301,8 +336,13 @@ async def predict_milk_grade(input_data: MilkQualityInput):
 
 # Milk Production Forecast
 class MilkProductionRequest(BaseModel):
+<<<<<<< HEAD
     year: int
     month: int
+=======
+     year:int
+     month:int
+>>>>>>> origin/Dasunika
 
 @app.post("/predict-milk-production")
 async def predict_milk_production(request: MilkProductionRequest):

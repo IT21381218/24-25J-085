@@ -28,7 +28,7 @@ This project is focused on developing a **Comprehensive Veterinary Application**
 
 3. **Ekanayake E.M.D.T**  
    - **Role**: Milk Production Prediction  
-   - **Responsibilities**: Created a predictive model to forecast milk production based on historical and environmental data. Integrated the model into the web application for real-time predictions.
+   - **Responsibilities**: Created a predictive model to forecast milk production based on historical and environmental data. Integrated the model into the web application for real time predictions.
 
 4. **Hettiarachchi V.E.**  
    - **Role**: Veterinary Communication and Services  
