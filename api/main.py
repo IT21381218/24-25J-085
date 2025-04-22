@@ -27,7 +27,8 @@ import json
 app = FastAPI()
 origins = [
     "http://localhost:3000",
-    "http://localhost:3001"
+    "http://localhost:3001",
+    "https://cattle-y-frontend.onrender.com"
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -50,6 +51,7 @@ GOOGLE_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/jso
 
 # Load MOdels Health
 MODEL_HEALTH = joblib.load('model_health_random_f_classifier.joblib')
+MODEL_HEALTH_FOCUSED = joblib.load('model_health_random_f_classifier_foused.joblib')
 LABEL_ENCODER =  joblib.load('label_encoder_health_status.joblib')
 
 # Load Milk Quality Checker
