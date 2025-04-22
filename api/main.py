@@ -266,6 +266,9 @@ def check_health_status(body_temp: float, heart_rate: int, spo2: int):
     # Determine predicted class (0 or 1)
     prediction = np.argmax(probabilities)
 
+    # Confidence is the probability of the predicted class
+    confidence = round(probabilities[prediction] * 100, 2)
+
     """
     Predict the health status of cattle based on input parameters.
 
