@@ -249,6 +249,8 @@ async def predict_health_status(input_data: HealthStatusInput):
 
         return {"health_status": health_status}
     
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred during prediction: {str(e)}")
 
     """
     Predict the health status of cattle based on input parameters.
