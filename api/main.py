@@ -241,6 +241,15 @@ async def predict_health_status(input_data: HealthStatusInput):
         # Convert input to DataFrame
         input_df = pd.DataFrame([input_data.dict()])
 
+        # Predict using the loaded model
+        predicted_class = MODEL_HEALTH.predict(input_df)[0]
+
+        # Decode the predicted class
+        health_status = LABEL_ENCODER.inverse_transform([predicted_class])[0]
+
+        return {"health_status": health_status}
+    
+
     """
     Predict the health status of cattle based on input parameters.
 
