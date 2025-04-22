@@ -218,7 +218,8 @@ async def update_cattle(cattle_id: str, cattle_data: CattleUpdate):
         error_trace = traceback.format_exc()
         print(f"Error: {e}\nTraceback:\n{error_trace}")
         raise HTTPException(status_code=500, detail=str(e))
-    
+       
+
 # Predict Cow Health
 class HealthStatusInput(BaseModel):
     body_temperature: float
@@ -235,6 +236,11 @@ class HealthStatusInput(BaseModel):
 
 @app.post("/predict-health-status")
 async def predict_health_status(input_data: HealthStatusInput):
+
+    try:
+        # Convert input to DataFrame
+        input_df = pd.DataFrame([input_data.dict()])
+
     """
     Predict the health status of cattle based on input parameters.
 
