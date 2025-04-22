@@ -1,9 +1,10 @@
 # main.py
-from fastapi import FastAPI, HTTPException, File, UploadFile
+from fastapi import FastAPI, HTTPException, File, UploadFile, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import bcrypt
+from typing import List, Optional
 import os
 import shutil
 from firestore_db import get_firestore_client
@@ -15,13 +16,17 @@ import pandas as pd
 import traceback
 from geopy.distance import geodesic
 import requests
+from textblob import TextBlob
 
+from connction_manager import ConnectionManager
+import json
 # this is comment
 
 app = FastAPI()
 origins = [
     "http://localhost:3000",
     "http://localhost:3001"
+    "https://cattle-y-frontend.onrender.com"
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -40,10 +45,11 @@ db = get_firestore_client()
 # Google Maps Configs
 GOOGLE_API_KEY = 'AIzaSyDAsJYZSQ92_NQAz9kiSpW1XpyuCxRl_uI'
 GOOGLE_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-
+GOOGLE_DETAILS_URL = "https://maps.googleapis.com/maps/api/place/details/json"
 
 # Load MOdels Health
 MODEL_HEALTH = joblib.load('model_health_random_f_classifier.joblib')
+MODEL_HEALTH_FOCUSED = joblib.load('model_health_random_f_classifier_foused.joblib')
 LABEL_ENCODER =  joblib.load('label_encoder_health_status.joblib')
 
 # Load Milk Quality Checker
@@ -68,6 +74,7 @@ class User(BaseModel):
     contact: str
     password: str
     nic: str
+    role: str = Field(default="Farmer")
 
 class LoginUser(BaseModel):
     username: str
@@ -109,6 +116,70 @@ async def login_user(user: LoginUser):
     user_data.pop("password")  # Remove the password field from the response
 
     return {"message": "Login successful", "user": user_data}
+
+# Cattle Details
+class Cattle(BaseModel):
+    name: str
+    breed: str
+    birth: str
+    health: str
+    status: str
+    image: str
+    owner: str
+
+@app.post("/cattle")
+async def create_cattle(cattle: Cattle):
+    cattle_ref = db.collection("cattle").document()
+    cattle_data = cattle.dict()
+    cattle_ref.set(cattle_data)
+    return {"message": "Cattle added successfully", "id": cattle_ref.id}
+
+@app.get("/cattle", response_model=List[dict])
+async def get_all_cattle():
+    cattle_docs = db.collection("cattle").stream()
+    return [{"id": doc.id, **doc.to_dict()} for doc in cattle_docs]
+
+@app.get("/cattle/owner/{owner}", response_model=List[dict])
+async def get_cattle_by_owner(owner: str):
+    cattle_docs = db.collection("cattle").where("owner", "==", owner).stream()
+    return [{"id": doc.id, **doc.to_dict()} for doc in cattle_docs]
+
+@app.delete("/cattle/{cattle_id}")
+async def delete_cattle(cattle_id: str):
+    cattle_ref = db.collection("cattle").document(cattle_id)
+    if not cattle_ref.get().exists:
+        raise HTTPException(status_code=404, detail="Cattle not found")
+    cattle_ref.delete()
+    return {"message": "Cattle deleted successfully"}
+
+class CattleUpdate(BaseModel):
+    health: str | None = None
+    status: str | None = None
+
+@app.put("/cattle/{cattle_id}")
+async def update_cattle(cattle_id: str, cattle_data: CattleUpdate):
+    try:
+        cattle_ref = db.collection("cattle").document(cattle_id)
+
+        # Check if the cattle document exists
+        if not cattle_ref.get().exists:
+            raise HTTPException(status_code=404, detail="Cattle not found")
+
+        # Prepare the update data
+        update_data = cattle_data.dict(exclude_unset=True)
+
+        # Ensure there is at least one field to update
+        if not update_data:
+            raise HTTPException(status_code=400, detail="No fields provided for update")
+        
+        # Perform the update
+        cattle_ref.update(update_data)
+        return {"message": "Cattle updated successfully"}
+    except Exception as e:
+        error_trace = traceback.format_exc()
+        print(f"Error: {e}\nTraceback:\n{error_trace}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 # Predict Pests and Diseases
 @app.post("/predict-pest")
@@ -163,6 +234,39 @@ class HealthStatusInput(BaseModel):
 
 @app.post("/predict-health-status")
 async def predict_health_status(input_data: HealthStatusInput):
+
+    try:
+        # Convert input to DataFrame
+        input_df = pd.DataFrame([input_data.dict()])
+
+        # Predict using the loaded model
+        predicted_class = MODEL_HEALTH.predict(input_df)[0]
+
+        # Decode the predicted class
+        health_status = LABEL_ENCODER.inverse_transform([predicted_class])[0]
+
+        return {"health_status": health_status}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred during prediction: {str(e)}")
+    
+    @app.get("/health-status")
+def check_health_status(body_temp: float, heart_rate: int, spo2: int):
+    """
+    Predicts if a person is healthy (1) or unhealthy (0) using a trained Random Forest model.
+    Returns confidence of prediction based on actual model probabilities.
+    """
+    features = np.array([[body_temp, heart_rate, spo2]])
+
+    # Get prediction probabilities
+    probabilities = MODEL_HEALTH_FOCUSED.predict_proba(features)[0]  # Returns [prob_unhealthy, prob_healthy]
+
+    # Confidence is the probability of the predicted class
+    confidence = round(probabilities[prediction] * 100, 2)
+
+    return {"status": int(prediction), "confidence": confidence}
+
+
     """
     Predict the health status of cattle based on input parameters.
 
