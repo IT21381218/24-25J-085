@@ -22,7 +22,7 @@ from connction_manager import ConnectionManager
 from datetime import datetime
 import json
 
-# this is comment
+
 
 app = FastAPI()
 origins = [
@@ -47,6 +47,7 @@ db = get_firestore_client()
 # Google Maps Configs
 GOOGLE_API_KEY = 'AIzaSyDAsJYZSQ92_NQAz9kiSpW1XpyuCxRl_uI'
 GOOGLE_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+GOOGLE_DETAILS_URL = "https://maps.googleapis.com/maps/api/place/details/json"
 
 
 # Load MOdels Health
