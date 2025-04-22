@@ -195,6 +195,30 @@ class CattleUpdate(BaseModel):
     health: str | None = None
     status: str | None = None
 
+@app.put("/cattle/{cattle_id}")
+async def update_cattle(cattle_id: str, cattle_data: CattleUpdate):
+    try:
+        cattle_ref = db.collection("cattle").document(cattle_id)
+
+    # Check if the cattle document exists
+        if not cattle_ref.get().exists:
+            raise HTTPException(status_code=404, detail="Cattle not found")
+        
+    # Prepare the update data
+        update_data = cattle_data.dict(exclude_unset=True)
+
+    # Ensure there is at least one field to update
+        if not update_data:
+            raise HTTPException(status_code=400, detail="No fields provided for update")
+
+    # Perform the update
+        cattle_ref.update(update_data)
+        return {"message": "Cattle updated successfully"}
+    except Exception as e:
+        error_trace = traceback.format_exc()
+        print(f"Error: {e}\nTraceback:\n{error_trace}")
+        raise HTTPException(status_code=500, detail=str(e))
+    
 # Predict Cow Health
 class HealthStatusInput(BaseModel):
     body_temperature: float
