@@ -72,10 +72,11 @@ CLASS_PESTS = ['Mastitis', ' Tick Infestation', 'Dermatophytosis (RINGWORM)', 'F
 class User(BaseModel):
     username: str
     full_name: str
-    email:str
+    email: str
     contact: str
     password: str
     nic: str
+    role: str = Field(default="Farmer")
 
 class LoginUser(BaseModel):
     username: str
