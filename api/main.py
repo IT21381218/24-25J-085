@@ -252,6 +252,14 @@ async def predict_health_status(input_data: HealthStatusInput):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred during prediction: {str(e)}")
 
+@app.get("/health-status")
+def check_health_status(body_temp: float, heart_rate: int, spo2: int):
+    """
+    Predicts if a person is healthy (1) or unhealthy (0) using a trained Random Forest model.
+    Returns confidence of prediction based on actual model probabilities.
+    """
+    features = np.array([[body_temp, heart_rate, spo2]])
+
     """
     Predict the health status of cattle based on input parameters.
 
