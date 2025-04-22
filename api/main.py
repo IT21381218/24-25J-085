@@ -260,6 +260,12 @@ def check_health_status(body_temp: float, heart_rate: int, spo2: int):
     """
     features = np.array([[body_temp, heart_rate, spo2]])
 
+    # Get prediction probabilities
+    probabilities = MODEL_HEALTH_FOCUSED.predict_proba(features)[0]  # Returns [prob_unhealthy, prob_healthy]
+
+    # Determine predicted class (0 or 1)
+    prediction = np.argmax(probabilities)
+
     """
     Predict the health status of cattle based on input parameters.
 
