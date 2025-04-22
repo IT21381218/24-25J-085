@@ -269,6 +269,8 @@ def check_health_status(body_temp: float, heart_rate: int, spo2: int):
     # Confidence is the probability of the predicted class
     confidence = round(probabilities[prediction] * 100, 2)
 
+    return {"status": int(prediction), "confidence": confidence}
+
     """
     Predict the health status of cattle based on input parameters.
 
