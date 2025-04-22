@@ -1,9 +1,10 @@
 # main.py
-from fastapi import FastAPI, HTTPException, File, UploadFile
+from fastapi import FastAPI, HTTPException, File, UploadFile, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import bcrypt
+from typing import List, Optional
 import os
 import shutil
 from firestore_db import get_firestore_client
@@ -15,6 +16,11 @@ import pandas as pd
 import traceback
 from geopy.distance import geodesic
 import requests
+from textblob import TextBlob
+# from chat import init_chat
+from connction_manager import ConnectionManager
+from datetime import datetime
+import json
 
 # this is comment
 
