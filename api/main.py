@@ -156,6 +156,45 @@ async def predict_pest(file: UploadFile = File(...)):
         os.remove(file_path)  # Clean up the uploaded file in case of error
         raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
 
+# Cattle Details
+class Cattle(BaseModel):
+    name: str
+    breed: str
+    birth: str
+    health: str
+    status: str
+    image: str
+    owner: str
+
+@app.post("/cattle")
+async def create_cattle(cattle: Cattle):
+    cattle_ref = db.collection("cattle").document()
+    cattle_data = cattle.dict()
+    cattle_ref.set(cattle_data)
+    return {"message": "Cattle added successfully", "id": cattle_ref.id}
+
+@app.get("/cattle", response_model=List[dict])
+async def get_all_cattle():
+    cattle_docs = db.collection("cattle").stream()
+    return [{"id": doc.id, **doc.to_dict()} for doc in cattle_docs]
+
+@app.get("/cattle/owner/{owner}", response_model=List[dict])
+async def get_cattle_by_owner(owner: str):
+    cattle_docs = db.collection("cattle").where("owner", "==", owner).stream()
+    return [{"id": doc.id, **doc.to_dict()} for doc in cattle_docs]
+
+@app.delete("/cattle/{cattle_id}")
+async def delete_cattle(cattle_id: str):
+    cattle_ref = db.collection("cattle").document(cattle_id)
+    if not cattle_ref.get().exists:
+        raise HTTPException(status_code=404, detail="Cattle not found")
+    cattle_ref.delete()
+    return {"message": "Cattle deleted successfully"}
+
+class CattleUpdate(BaseModel):
+    health: str | None = None
+    status: str | None = None
+
 # Predict Cow Health
 class HealthStatusInput(BaseModel):
     body_temperature: float
