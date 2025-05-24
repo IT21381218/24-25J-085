@@ -3,19 +3,23 @@ import React from 'react';
 import Sidebar from '../components/Sidebar';
 import Topbar from '../components/Topbar';
 import Footer from '../components/Footer';
-import DiseaseUpload from '../components/DiseaseUpload';
-import InformationContainer from '../components/InformationContainer';
 import HealthRecordForm from '../components/HeaalthRecordsForm';
+import CattleMonitor from '../components/CattleMonitor';
+import { useLocation } from 'react-router-dom';
+import FeedIntakes from '../components/FeedIntakes';
 
-const DiseaseDetection = () => {
+const CattleSummary = () => {
+  const location = useLocation();
+  const { cattle } = location.state || {};
+
   return (
     <div className="dashContainer">
       <Sidebar />
       <div className="main">
+        <Topbar />
         <div className="details">
-          <DiseaseUpload />
-          <br></br>
-          <HealthRecordForm />
+          <CattleMonitor cattle={cattle}/>
+          <FeedIntakes />
         </div>
         <Footer />
       </div>
@@ -23,4 +27,4 @@ const DiseaseDetection = () => {
   );
 };
 
-export default DiseaseDetection;
+export default CattleSummary;

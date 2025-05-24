@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import ENV from '../data/Env';
 
 const HealthCheckupForm = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +41,7 @@ const HealthCheckupForm = () => {
     setHealthStatus(null);
 
     try {
-      const response = await axios.post('http://localhost:8000/predict-health-status', formData);
+      const response = await axios.post(ENV.SERVER+'/predict-health-status', formData);
       setHealthStatus(response.data.health_status);
     } catch (error) {
       console.error('Error predicting health status:', error);
