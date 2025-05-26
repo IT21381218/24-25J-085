@@ -275,7 +275,7 @@ async def predict_milk_production(request: MilkProductionRequest):
     - predicted_value: float, predicted milk production value for the given month.
     """
     try:
-        # Extract year and month from the request
+        # Extract month and year from the request
         year = request.year
         month = request.month
 
