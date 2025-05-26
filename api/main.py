@@ -299,7 +299,7 @@ async def predict_milk_production(request: MilkProductionRequest):
             )
 
         # Forecast the milk production for the given number of months ahead
-        Predict = MODEL_ML_FORECAST.forecast(steps=months_ahead)
+        forecast = MODEL_ML_FORECAST.forecast(steps=months_ahead)
         print(year)
         print(month)
 
